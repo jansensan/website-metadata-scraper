@@ -7,6 +7,13 @@ exports.handler = async (event, context, callback) => {
   const body = JSON.parse(event.body);
   const url = _.get(body, 'url');
 
+  if (event.httpMethod !== 'POST') {
+    return callback(
+      null,
+      buildResponse('preflight step'),
+    );
+  }
+
   try {
     const scraped = await scrape(url);
     return callback(
