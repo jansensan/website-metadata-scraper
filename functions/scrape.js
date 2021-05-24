@@ -30,7 +30,7 @@ function buildResponse(data) {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
-      'Access-Control-Request-Method': 'GET,POST',
+      'Access-Control-Request-Method': 'GET, POST, PUT, DELETE',
     },
     body: JSON.stringify(data)
   };
