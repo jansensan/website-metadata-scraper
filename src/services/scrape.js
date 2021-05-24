@@ -2,41 +2,29 @@ const cheerio = require('cheerio');
 const got = require('got');
 const moment = require('moment');
 
-// const urlToLoad = 'https://contemporarylynx.co.uk/artificial-intelligence-in-global-art-auctions';
-// const urlToLoad = 'https://ui.jansensan.net/';
-// const urlToLoad = 'https://arts-et-medias.net/';
-const urlToLoad = 'https://www.artnews.com/art-in-america/features/teamlab-art-world-1234580691/';
 
-
-test();
-
-async function test() {
-  const scraped = await scrape(urlToLoad);
-  console.log('scraped:', scraped);
-}
-
-async function scrape(url) {
+module.exports = async function scrape(url) {
   const startTime = moment();
-  log(`⏳ Scraping ${ url }`);
+  log(`⏳ Scraping "${url}"`);
 
   return new Promise((resolve, reject) => {
-    got(urlToLoad)
+    got(url)
       .then(response => {
         log(`🔬 Parsing...`);
-  
+
         let scraped = {};
-  
+
         // parse with cheerio
         const $ = cheerio.load(response.body);
-  
+
         // get title
         scraped.title = getTitle($);
-  
+
         const metaNodes = $('meta');
-  
+
         scraped.description = getDescription(metaNodes);
         scraped.website = getWebsite(metaNodes);
-  
+
         scraped.openGraph = {
           title: getOGTitle(metaNodes),
           description: getOGDescription(metaNodes),
@@ -59,7 +47,7 @@ async function scrape(url) {
           url: getOGUrl(metaNodes),
           locale: getOGLocale(metaNodes),
         };
-  
+
         scraped.twitterCard = {
           username: getTCUsername(metaNodes),
           title: getTCTitle(metaNodes),
@@ -71,11 +59,11 @@ async function scrape(url) {
             alt: getTCImageAlt(metaNodes),
           }
         };
-  
+
         scraped.duration = moment().valueOf() - startTime.valueOf();
-  
-        log(`✅ Parsing completed in ${ scraped.duration }ms`);
-  
+
+        log(`✅ Parsing completed in ${scraped.duration}ms`);
+
         resolve(scraped);
       })
       .catch(error => {
@@ -86,10 +74,10 @@ async function scrape(url) {
 }
 
 
-// parsing methods
+// methods
 function getTitle(parser) {
   const titleNode = parser('title')[0];
-  
+
   if (!titleNode) {
     return '';
   }
@@ -352,7 +340,7 @@ function getTCImageAlt(nodes) {
 
 // utils
 function log(message) {
-  console.log(`${ getTimeStamp() } ${ message }`);
+  console.log(`${getTimeStamp()} ${message}`);
 }
 
 function getTimeStamp(time) {
