@@ -1,0 +1,21 @@
+{
+  "name": "metadata-scraper-functions",
+  "author": "Mat Janson Blanchet <mat.jb@jansensan.net> (https://jansensan.net)",
+  "version": "1.0.0",
+  "description": "",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node ./public/api/server.js",
+    "start:www": "yarn hs ./public/www"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.9",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "got": "^11.8.2",
+    "http-server": "^0.12.3",
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {}
+}

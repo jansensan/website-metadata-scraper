@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Website Metadata Scraper</title>
+    <link rel="stylesheet" href="/static/styles/reset.css">
+    <link rel="stylesheet" href="/static/styles/styles.css">
+  </head>
+  <body>
+    <h1>Website Metadata Scraper</h1>
+    <section class="form-section">
+      <form name="scraperForm" id="scraperForm">
+        <label for="urlInput">Enter a URL</label>
+        <input
+          type="text"
+          id="urlInput"
+          name="urlInput"
+          required
+        >
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+    <section id="spinnerContainer" class="spinner-container">
+      <img
+        src="/static/images/spinner.gif"
+        alt=""
+      >
+    </section>
+    <section id="resultsContainer" class="results-section">
+      <h2>Results</h2>
+      <dl>
+        <div id="metaTitleContainer">
+          <dt>Title</dt>
+          <dd id="metaTitleValue"></dd>
+        </div>
+        <div id="metaDescriptionContainer">
+          <dt>Description</dt>
+          <dd id="metaDescriptionValue"></dd>
+        </div>
+        <div id="metaWebsiteContainer">
+          <dt>Website</dt>
+          <dd id="metaWebsiteValue"></dd>
+        </div>
+
+        <h3 id="ogHeading">OpenGraph</h3>
+        <div id="ogTitleContainer">
+          <dt>Title</dt>
+          <dd id="ogTitleValue"></dd>
+        </div>
+        <div id="ogDescriptionContainer">
+          <dt>Description</dt>
+          <dd id="ogDescriptionValue"></dd>
+        </div>
+        <div id="ogSiteNameContainer">
+          <dt>Site Name</dt>
+          <dd id="ogSiteNameValue"></dd>
+        </div>
+        <div id="ogSiteURLContainer">
+          <dt>Site URL</dt>
+          <dd id="ogSiteURLValue"></dd>
+        </div>
+        <div id="ogLocaleContainer">
+          <dt>Locale</dt>
+          <dd id="ogLocaleValue"></dd>
+        </div>
+
+        <h4 id="ogImageHeading">Image</h4>
+        <img
+          class="social-network-image"
+          id="ogImage"
+          src=""
+          alt=""
+        />
+        <div id="ogImageContainer">
+          <dt>Image (http)</dt>
+          <dd id="ogImageValue"></dd>
+        </div>
+        <div id="ogHttpsImageContainer">
+          <dt>Image (https)</dt>
+          <dd id="ogHttpsImageValue"></dd>
+        </div>
+        <div id="ogImageAltContainer">
+          <dt>Alt Text</dt>
+          <dd id="ogImageAltValue"></dd>
+        </div>
+
+        <h4 id="ogArticleHeading">Article</h4>
+        <div id="ogArticleAuthorContainer">
+          <dt>Article Author</dt>
+          <dd id="ogArticleAuthorValue"></dd>
+        </div>
+        <div id="ogSectionContainer">
+          <dt>Section</dt>
+          <dd id="ogSectionValue"></dd>
+        </div>
+        <div id="ogPublishedDateContainer">
+          <dt>Published Date</dt>
+          <dd id="ogPublishedDateValue"></dd>
+        </div>
+        <div id="ogModifiedDateContainer">
+          <dt>Modified Date</dt>
+          <dd id="ogModifiedDateValue"></dd>
+        </div>
+
+        <h4 id="ogBookHeading">Book</h4>
+        <div id="ogBookAuthorContainer">
+          <dt>Book Author</dt>
+          <dd id="ogBookAuthorValue"></dd>
+        </div>
+        <div id="ogReleaseDateContainer">
+          <dt>Release Date</dt>
+          <dd id="ogReleaseDateValue"></dd>
+        </div>
+
+        <h3 id="tcHeading">TwitterCard</h3>
+        <div id="tcUsernameContainer">
+          <dt>Username</dt>
+          <dd id="tcUsernameValue"></dd>
+        </div>
+        <div id="tcTitleContainer">
+          <dt>Title</dt>
+          <dd id="tcTitleValue"></dd>
+        </div>
+        <div id="tcTitleTextContainer">
+          <dt>Title Text</dt>
+          <dd id="tcTitleTextValue"></dd>
+        </div>
+        <div id="tcDescriptionContainer">
+          <dt>Description</dt>
+          <dd id="tcDescriptionValue"></dd>
+        </div>
+
+        <h4 id="tcImageHeading">Image</h4>
+        <img
+          class="social-network-image"
+          id="tcImage"
+          src=""
+          alt=""
+        />
+        <div id="tcImageContainer">
+          <dt>Image URL</dt>
+          <dd id="tcImageValue"></dd>
+        </div>
+        <div id="tcImageSrcContainer">
+          <dt>Image Source</dt>
+          <dd id="tcImageSrcValue"></dd>
+        </div>
+        <div id="tcImageAltContainer">
+          <dt>Alt Text</dt>
+          <dd id="tcImageAltValue"></dd>
+        </div>
+      </dl>
+    </section>
+    <section id="errorMessage" class="error-message">
+      An error occured while attempting to parse the provided URL. Ensure to use a valid URL and try again.
+    </section>
+    <script src="/static/scripts/script.js"></script>
+  </body>
+</html>
