@@ -244,7 +244,8 @@ function toggleValueElement(value, containerId, valueId) {
   if (value) {
     showElement(metaTitleContainer);
     var valueElement = document.getElementById(valueId);
-    valueElement.innerText = value;
+    valueElement.value = value;
+    valueElement.disabled = true;
   } else {
     hideElement(metaTitleContainer)
   }

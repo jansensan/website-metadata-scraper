@@ -13,12 +13,12 @@ h1, h2 {
 
 h3 {
   font-size: 14pt;
-  margin: 15px 0 10px 0;
+  margin: 25px 0 10px 0;
 }
 
 h4 {
   font-size: 12pt;
-  margin: 15px 0 10px 0;
+  margin: 25px 0 10px 0;
 }
 
 label {
@@ -29,16 +29,22 @@ label {
 }
 
 input[type="text"] {
+  border-radius: 2px;
   border: 1px solid black;
   font-size: 12pt;
   padding: 5px;
-  width: 640px;
   width: calc(100% - 170px);
+}
+
+input[type="text"]:disabled {
+  background-color: #eeeeee;
+  color: #111111;
 }
 
 button[type="button"],
 button[type="submit"] {
   background-color: black;
+  border-radius: 2px;
   border: 1px solid transparent;
   color: white;
   cursor: pointer;
@@ -64,13 +70,6 @@ dt {
   font-weight: bold;
   margin-bottom: 5px;
   margin-top: 10px;
-}
-
-dd {
-  background-color: #eeeeee;
-  border-radius: 2px;
-  border: 1px solid lightgrey;
-  padding: 5px;
 }
 
 .spinner-container {
@@ -99,4 +98,6 @@ dd {
 
 .social-network-image {
   display: none;
+  max-width: 100%;
+  margin: 20px 0;
 }
