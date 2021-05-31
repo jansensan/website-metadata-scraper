@@ -55,16 +55,6 @@ function onFormSubmit(event) {
 }
 
 function showResults(data) {
-  var hasOG = hasOGMetaData(data.openGraph);
-  if (!hasOG) {
-    showOGWarning();
-  }
-  
-  var hasTC = hasTCMetaData(data.twitterCard);
-  if (!hasTC) {
-    showTCWarning();
-  }
-
   // generic
   toggleValueElement(
     data.value,
@@ -83,6 +73,14 @@ function showResults(data) {
   );
 
   // opengraph
+  var hasOG = hasOGMetaData(data.openGraph);
+  if (!hasOG) {
+    showOGWarning();
+  }
+  toggleOGImageHeading(data.openGraph);
+  toggleOGArticleHeading(data.openGraph);
+  toggleOGBookHeading(data.openGraph);
+
   var og = data.openGraph;
   toggleValueElement(
     og.title,
@@ -170,6 +168,12 @@ function showResults(data) {
   );
 
   // twitter card
+  var hasTC = hasTCMetaData(data.twitterCard);
+  if (!hasTC) {
+    showTCWarning();
+  }
+  toggleTCImageHeading(data.twitterCard);
+
   var tc = data.twitterCard;
   toggleValueElement(
     tc.username,
