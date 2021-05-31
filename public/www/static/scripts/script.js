@@ -23,8 +23,11 @@ function onFormSubmit(event) {
   event.stopPropagation();
 
   showSpinner();
+
   hideResults();
   hideError();
+  hideOGWarning();
+  hideTCWarning();
 
   var xhr = new XMLHttpRequest();
 
@@ -52,6 +55,16 @@ function onFormSubmit(event) {
 }
 
 function showResults(data) {
+  var hasOG = hasOGMetaData(data.openGraph);
+  if (!hasOG) {
+    showOGWarning();
+  }
+  
+  var hasTC = hasTCMetaData(data.twitterCard);
+  if (!hasTC) {
+    showTCWarning();
+  }
+
   // generic
   toggleValueElement(
     data.value,
@@ -77,7 +90,7 @@ function showResults(data) {
     'ogTitleValue'
   );
   toggleValueElement(
-    og.title,
+    og.description,
     'ogDescriptionContainer',
     'ogDescriptionValue'
   );
@@ -229,6 +242,26 @@ function hideError() {
   errorMessage.style.display = 'none';
 }
 
+function showOGWarning() {
+  var warning = document.getElementById('ogWarning');
+  warning.style.display = 'block';
+}
+
+function hideOGWarning() {
+  var warning = document.getElementById('ogWarning');
+  warning.style.display = 'none';
+}
+
+function showTCWarning() {
+  var warning = document.getElementById('tcWarning');
+  warning.style.display = 'block';
+}
+
+function hideTCWarning() {
+  var warning = document.getElementById('tcWarning');
+  warning.style.display = 'none';
+}
+
 
 // dom methods
 function showElement(element) {
@@ -281,4 +314,83 @@ function setTCImage(img, imgSrc, altText) {
   tcImage.setAttribute('alt', altText);
   tcImage.setAttribute('title', altText);
   tcImage.style.display = 'block';
+}
+
+function hasOGMetaData(data) {
+  return (
+    data.title !== ''
+    || data.description !== ''
+    || data.siteName !== ''
+    || data.url !== ''
+    || data.locale !== ''
+    || hasOGImage(data)
+    || hasOGArticle(data)
+    || hasOGBook(data)
+  );
+}
+
+function hasOGImage(data) {
+  return (
+    data.image.http !== ''
+    || data.image.https !== ''
+    || data.image.alt !== ''
+  );
+}
+
+function toggleOGImageHeading(data) {
+  var hasImage = hasOGImage(data);
+  var heading = document.getElementById('ogImageHeading');
+  heading.style.display = hasImage ? 'block' : 'none';
+}
+
+function hasOGArticle(data) {
+  return (
+    data.article.author !== ''
+    || data.article.section !== ''
+    || data.article.published !== ''
+    || data.article.modified !== ''
+  );
+}
+
+function toggleOGArticleHeading(data) {
+  var hasArticle = hasOGArticle(data);
+  var heading = document.getElementById('ogArticleHeading');
+  heading.style.display = hasArticle ? 'block' : 'none';
+}
+
+function hasOGBook(data) {
+  return (
+    data.book.author !== ''
+    || data.book.releaseDate !== ''
+  );
+}
+
+function toggleOGBookHeading(data) {
+  var hasBook = hasOGArticle(data);
+  var heading = document.getElementById('ogBookHeading');
+  heading.style.display = hasBook ? 'block' : 'none';
+}
+
+function hasTCMetaData(data) {
+  return (
+    data.username !== ''
+    || data.title !== ''
+    || data.titleText !== ''
+    || data.description !== ''
+    || hasTCImage(data)
+  );
+}
+
+function hasTCImage(data) {
+  return (
+    data.image.url !== ''
+    || data.image.src !== ''
+    || data.image.alt !== ''
+  );
+}
+
+function toggleTCImageHeading(data) {
+  var hasImage = hasTCImage(data);
+  var heading = document.getElementById('tcImageHeading');
+  heading.style.display = hasImage ? 'block' : 'none';
 }

@@ -95,6 +95,14 @@ dt {
   display: block;
 }
 
+.warning {
+  background-color: lightgoldenrodyellow;
+  border-radius: 2px;
+  border: 1px solid #a3a300;
+  display: none;
+  padding: 5px;
+}
+
 .error-message {
   background-color: lightpink;
   border-radius: 2px;
