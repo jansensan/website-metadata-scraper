@@ -7,6 +7,7 @@ const cors = require('cors');
 const routes = require('./routes');
 
 const app = express();
+const address = process.env.API_ADDRESS;
 const port = process.env.API_PORT;
 
 
@@ -18,6 +19,6 @@ app.use(cors());
 routes(app);
 
 // start app
-app.listen(port);
+app.listen(port, address);
 
-console.log(`Metadata scraper started at http://localhost:${ port }`);
+console.log(`Metadata scraper started at http://${ address }:${ port }`);

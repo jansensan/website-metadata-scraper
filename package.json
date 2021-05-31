@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node ./public/api/server.js",
-    "start:www": "yarn hs ./public/www"
+    "start:www": "yarn hs ./public/www --cors --port 6464"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.9",

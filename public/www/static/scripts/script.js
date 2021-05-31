@@ -1,4 +1,4 @@
-var scrapeURL = 'http://localhost:3232/scrape';
+var scrapeURL = 'http://127.0.0.1:3232/scrape';
 
 // dom elements
 var form = null;
