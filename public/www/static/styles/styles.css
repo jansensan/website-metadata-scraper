@@ -45,6 +45,20 @@ input[type="text"]:disabled {
   color: #111111;
 }
 
+code {
+  background-color: #eeeeee;
+  border-radius: 2px;
+  border: 1px solid darkgrey;
+  color: #464646;
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 9pt;
+  font-weight: bold;
+  margin: 10px 0;
+  padding: 2.5px;
+  position: relative;
+}
+
 .url-input {
   width: calc(100% - 170px) !important;
 }
