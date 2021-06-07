@@ -57,7 +57,7 @@ function onFormSubmit(event) {
 function showResults(data) {
   // generic
   toggleValueElement(
-    data.value,
+    data.title,
     'metaTitleContainer',
     'metaTitleValue'
   );
