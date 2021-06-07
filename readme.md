@@ -1,10 +1,6 @@
-# Metadata Scraper Functions
+# Website Metadata Scraper
 
-This repository is supposed to host lambda functions which would be served by Netlify.
-
-However, due to CORS idiocy, too much time gets wasted on making this work properly.
-
-Instead, this repo currently hosts both the API and its website. It is made to work locally, it is not tested to work on a server at this time.
+This repo currently hosts both the API and the website (UI) to scrape and parse websites' metadata (generic, OpenGraph, Twitter Card). It is made to work locally, it is not tested to work on a server at this time.
 
 
 ## Instructions
