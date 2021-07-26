@@ -17,6 +17,5 @@ These should be needed only once.
 
 ### Run the API and the website
 
-- In a Terminal window, run `yarn start` to start the API
-- In a separate Terminal window, run `yarn start:www` to start the website
+- In a Terminal window, run `yarn start`, which will start both the API and the webserver
 - Go to <http://localhost:6464> to view and use the website

@@ -5,8 +5,9 @@
   "author": "Mat Janson Blanchet <mat.jb@jansensan.net> (https://jansensan.net)",
   "license": "MIT",
   "scripts": {
-    "start": "node ./public/api/server.js",
-    "start:www": "yarn hs ./public/www --cors --port 6464"
+    "start:server": "node ./public/api/server.js",
+    "start:www": "yarn hs ./public/www --cors --port 6464",
+    "start": "yarn start:server & yarn start:www"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.9",
