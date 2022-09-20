@@ -4,17 +4,26 @@ body {
   padding: 25px;
 }
 
+.main-content {
+  width: 800px;
+  margin: 0 auto;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-h1, h2 {
+h1 {
+  font-size: 20pt;
+}
+
+h2 {
   font-size: 16pt;
 }
 
 h3 {
   font-size: 14pt;
-  margin: 25px 0 10px 0;
+  margin: 35px 0 10px 0;
 }
 
 h4 {

@@ -7,213 +7,218 @@
     <link rel="stylesheet" href="/static/styles/styles.css">
   </head>
   <body>
-    <h1>Website Metadata Scraper</h1>
-    <section class="form-section">
-      <form name="scraperForm" id="scraperForm">
-        <label for="urlInput">Enter a URL</label>
-        <input
-          type="text"
-          id="urlInput"
-          name="urlInput"
-          class="url-input"
-          required
+    <div class="main-content">
+      <h1>Website Metadata Scraper</h1>
+  
+      <section class="form-section">
+        <form name="scraperForm" id="scraperForm">
+          <label for="urlInput">Enter a URL</label>
+          <input
+            type="text"
+            id="urlInput"
+            name="urlInput"
+            class="url-input"
+            required
+          >
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+  
+      <section id="spinnerContainer" class="spinner-container">
+        <img
+          src="/static/images/spinner.gif"
+          alt=""
         >
-        <button type="submit">Submit</button>
-      </form>
-    </section>
-    <section id="spinnerContainer" class="spinner-container">
-      <img
-        src="/static/images/spinner.gif"
-        alt=""
-      >
-    </section>
-    <section id="resultsContainer" class="results-section">
-      <h2>Results</h2>
-      <dl>
-        <div id="metaTitleContainer">
-          <dt>Title (<code>&lt;title&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="metaTitleValue" id="metaTitleValue">
-          </dd>
-        </div>
-        <div id="metaDescriptionContainer">
-          <dt>Description (<code>&lt;meta name="description" content=""/&gt;</code>)</dt>
-          <dd>
-            <textarea name="metaDescriptionValue" id="metaDescriptionValue"></textarea>
-          </dd>
-        </div>
-        <div id="metaWebsiteContainer">
-          <dt>Website (<code>&lt;meta property="website" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="metaWebsiteValue" id="metaWebsiteValue">
-          </dd>
-        </div>
-
-        <h3 id="ogHeading">OpenGraph (<a href="https://ogp.me/">Documentation</a>)</h3>
-
-        <p id="ogWarning" class="warning">
-          This page has no OpenGraph metadata
-        </p>
-
-        <div id="ogTitleContainer">
-          <dt>Title (<code>&lt;meta property="og:title" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogTitleValue" id="ogTitleValue">
-          </dd>
-        </div>
-        <div id="ogDescriptionContainer">
-          <dt>Description (<code>&lt;meta property="og:description" content=""/&gt;</code>)</dt>
-          <dd>
-            <textarea name="ogDescriptionValue" id="ogDescriptionValue"></textarea>
-          </dd>
-        </div>
-        <div id="ogSiteNameContainer">
-          <dt>Site Name (<code>&lt;meta property="og:site_name" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogSiteNameValue" id="ogSiteNameValue">
-          </dd>
-        </div>
-        <div id="ogSiteURLContainer">
-          <dt>Site URL (<code>&lt;meta property="og:url" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogSiteURLValue" id="ogSiteURLValue">
-          </dd>
-        </div>
-        <div id="ogLocaleContainer">
-          <dt>Locale (<code>&lt;meta property="og:locale" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogLocaleValue" id="ogLocaleValue">
-          </dd>
-        </div>
-
-        <h4 id="ogImageHeading">Image</h4>
-        <img
-          class="social-network-image"
-          id="ogImage"
-          src=""
-          alt=""
-        />
-        <div id="ogImageContainer">
-          <dt>Image (<code>&lt;meta property="og:image" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogImageValue" id="ogImageValue">
-          </dd>
-        </div>
-        <div id="ogHttpsImageContainer">
-          <dt>Image (<code>&lt;meta property="og:image:secure_url" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogHttpsImageValue" id="ogHttpsImageValue">
-          </dd>
-        </div>
-        <div id="ogImageAltContainer">
-          <dt>Alt Text (<code>&lt;meta property="og:image:alt" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogImageAltValue" id="ogImageAltValue">
-          </dd>
-        </div>
-
-        <h4 id="ogArticleHeading">Article</h4>
-        <div id="ogArticleAuthorContainer">
-          <dt>Article Author (<code>&lt;meta property="article:author" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogArticleAuthorValue" id="ogArticleAuthorValue">
-          </dd>
-        </div>
-        <div id="ogSectionContainer">
-          <dt>Section (<code>&lt;meta property="article:section" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogSectionValue" id="ogSectionValue">
-          </dd>
-        </div>
-        <div id="ogPublishedDateContainer">
-          <dt>Published Date (<code>&lt;meta property="article:published_time" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogPublishedDateValue" id="ogPublishedDateValue">
-          </dd>
-        </div>
-        <div id="ogModifiedDateContainer">
-          <dt>Modified Date (<code>&lt;meta property="article:modified_time" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogModifiedDateValue" id="ogModifiedDateValue">
-          </dd>
-        </div>
-
-        <h4 id="ogBookHeading">Book</h4>
-        <div id="ogBookAuthorContainer">
-          <dt>Book Author (<code>&lt;meta property="book:author" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogBookAuthorValue" id="ogBookAuthorValue">
-          </dd>
-        </div>
-        <div id="ogReleaseDateContainer">
-          <dt>Release Date (<code>&lt;meta property="book:release_date" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="ogReleaseDateValue" id="ogReleaseDateValue">
-          </dd>
-        </div>
-
-        <h3 id="tcHeading">Twitter Card (<a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards">Documentation</a>)</h3>
-
-        <p id="tcWarning" class="warning">
-          This page has no Twitter Card metadata
-        </p>
-
-        <div id="tcUsernameContainer">
-          <dt>Username (<code>&lt;meta name="twitter:site" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="tcUsernameValue" id="tcUsernameValue">
-          </dd>
-        </div>
-        <div id="tcTitleContainer">
-          <dt>Title (<code>&lt;meta name="twitter:title" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="tcTitleValue" id="tcTitleValue">
-          </dd>
-        </div>
-        <div id="tcTitleTextContainer">
-          <dt>Title Text (<code>&lt;meta name="twitter:text:title" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="tcTitleTextValue" id="tcTitleTextValue">
-          </dd>
-        </div>
-        <div id="tcDescriptionContainer">
-          <dt>Description (<code>&lt;meta name="twitter:description" content=""/&gt;</code>)</dt>
-          <dd>
-            <textarea name="tcDescriptionValue" id="tcDescriptionValue"></textarea>
-          </dd>
-        </div>
-
-        <h4 id="tcImageHeading">Image</h4>
-        <img
-          class="social-network-image"
-          id="tcImage"
-          src=""
-          alt=""
-        />
-        <div id="tcImageContainer">
-          <dt>Image (<code>&lt;meta name="twitter:image" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="tcImageValue" id="tcImageValue">
-          </dd>
-        </div>
-        <div id="tcImageSrcContainer">
-          <dt>Image (<code>&lt;meta name="twitter:image:src" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="tcImageSrcValue" id="tcImageSrcValue">
-          </dd>
-        </div>
-        <div id="tcImageAltContainer">
-          <dt>Alt Text (<code>&lt;meta name="twitter:image:alt" content=""/&gt;</code>)</dt>
-          <dd>
-            <input type="text" name="tcImageAltValue" id="tcImageAltValue">
-          </dd>
-        </div>
-      </dl>
-    </section>
-
-    <section id="errorMessage" class="error-message">
-      An error occured while attempting to parse the provided URL. Ensure to use a valid URL and try again.
-    </section>
+      </section>
+  
+      <section id="resultsContainer" class="results-section">
+        <h2>Results</h2>
+        <dl>
+          <div id="metaTitleContainer">
+            <dt>Title (<code>&lt;title&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="metaTitleValue" id="metaTitleValue">
+            </dd>
+          </div>
+          <div id="metaDescriptionContainer">
+            <dt>Description (<code>&lt;meta name="description" content=""/&gt;</code>)</dt>
+            <dd>
+              <textarea name="metaDescriptionValue" id="metaDescriptionValue"></textarea>
+            </dd>
+          </div>
+          <div id="metaWebsiteContainer">
+            <dt>Website (<code>&lt;meta property="website" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="metaWebsiteValue" id="metaWebsiteValue">
+            </dd>
+          </div>
+  
+          <h3 id="ogHeading">OpenGraph (<a href="https://ogp.me/">Documentation</a>)</h3>
+  
+          <p id="ogWarning" class="warning">
+            This page has no OpenGraph metadata
+          </p>
+  
+          <div id="ogTitleContainer">
+            <dt>Title (<code>&lt;meta property="og:title" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogTitleValue" id="ogTitleValue">
+            </dd>
+          </div>
+          <div id="ogDescriptionContainer">
+            <dt>Description (<code>&lt;meta property="og:description" content=""/&gt;</code>)</dt>
+            <dd>
+              <textarea name="ogDescriptionValue" id="ogDescriptionValue"></textarea>
+            </dd>
+          </div>
+          <div id="ogSiteNameContainer">
+            <dt>Site Name (<code>&lt;meta property="og:site_name" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogSiteNameValue" id="ogSiteNameValue">
+            </dd>
+          </div>
+          <div id="ogSiteURLContainer">
+            <dt>Site URL (<code>&lt;meta property="og:url" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogSiteURLValue" id="ogSiteURLValue">
+            </dd>
+          </div>
+          <div id="ogLocaleContainer">
+            <dt>Locale (<code>&lt;meta property="og:locale" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogLocaleValue" id="ogLocaleValue">
+            </dd>
+          </div>
+  
+          <h4 id="ogImageHeading">Image</h4>
+          <img
+            class="social-network-image"
+            id="ogImage"
+            src=""
+            alt=""
+          />
+          <div id="ogImageContainer">
+            <dt>Image (<code>&lt;meta property="og:image" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogImageValue" id="ogImageValue">
+            </dd>
+          </div>
+          <div id="ogHttpsImageContainer">
+            <dt>Image (<code>&lt;meta property="og:image:secure_url" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogHttpsImageValue" id="ogHttpsImageValue">
+            </dd>
+          </div>
+          <div id="ogImageAltContainer">
+            <dt>Alt Text (<code>&lt;meta property="og:image:alt" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogImageAltValue" id="ogImageAltValue">
+            </dd>
+          </div>
+  
+          <h4 id="ogArticleHeading">Article</h4>
+          <div id="ogArticleAuthorContainer">
+            <dt>Article Author (<code>&lt;meta property="article:author" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogArticleAuthorValue" id="ogArticleAuthorValue">
+            </dd>
+          </div>
+          <div id="ogSectionContainer">
+            <dt>Section (<code>&lt;meta property="article:section" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogSectionValue" id="ogSectionValue">
+            </dd>
+          </div>
+          <div id="ogPublishedDateContainer">
+            <dt>Published Date (<code>&lt;meta property="article:published_time" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogPublishedDateValue" id="ogPublishedDateValue">
+            </dd>
+          </div>
+          <div id="ogModifiedDateContainer">
+            <dt>Modified Date (<code>&lt;meta property="article:modified_time" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogModifiedDateValue" id="ogModifiedDateValue">
+            </dd>
+          </div>
+  
+          <h4 id="ogBookHeading">Book</h4>
+          <div id="ogBookAuthorContainer">
+            <dt>Book Author (<code>&lt;meta property="book:author" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogBookAuthorValue" id="ogBookAuthorValue">
+            </dd>
+          </div>
+          <div id="ogReleaseDateContainer">
+            <dt>Release Date (<code>&lt;meta property="book:release_date" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="ogReleaseDateValue" id="ogReleaseDateValue">
+            </dd>
+          </div>
+  
+          <h3 id="tcHeading">Twitter Card (<a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards">Documentation</a>)</h3>
+  
+          <p id="tcWarning" class="warning">
+            This page has no Twitter Card metadata
+          </p>
+  
+          <div id="tcUsernameContainer">
+            <dt>Username (<code>&lt;meta name="twitter:site" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="tcUsernameValue" id="tcUsernameValue">
+            </dd>
+          </div>
+          <div id="tcTitleContainer">
+            <dt>Title (<code>&lt;meta name="twitter:title" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="tcTitleValue" id="tcTitleValue">
+            </dd>
+          </div>
+          <div id="tcTitleTextContainer">
+            <dt>Title Text (<code>&lt;meta name="twitter:text:title" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="tcTitleTextValue" id="tcTitleTextValue">
+            </dd>
+          </div>
+          <div id="tcDescriptionContainer">
+            <dt>Description (<code>&lt;meta name="twitter:description" content=""/&gt;</code>)</dt>
+            <dd>
+              <textarea name="tcDescriptionValue" id="tcDescriptionValue"></textarea>
+            </dd>
+          </div>
+  
+          <h4 id="tcImageHeading">Image</h4>
+          <img
+            class="social-network-image"
+            id="tcImage"
+            src=""
+            alt=""
+          />
+          <div id="tcImageContainer">
+            <dt>Image (<code>&lt;meta name="twitter:image" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="tcImageValue" id="tcImageValue">
+            </dd>
+          </div>
+          <div id="tcImageSrcContainer">
+            <dt>Image (<code>&lt;meta name="twitter:image:src" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="tcImageSrcValue" id="tcImageSrcValue">
+            </dd>
+          </div>
+          <div id="tcImageAltContainer">
+            <dt>Alt Text (<code>&lt;meta name="twitter:image:alt" content=""/&gt;</code>)</dt>
+            <dd>
+              <input type="text" name="tcImageAltValue" id="tcImageAltValue">
+            </dd>
+          </div>
+        </dl>
+      </section>
+  
+      <section id="errorMessage" class="error-message">
+        An error occured while attempting to parse the provided URL. Ensure to use a valid URL and try again.
+      </section>
+    </div>
 
     <script src="/static/scripts/script.js"></script>
   </body>
