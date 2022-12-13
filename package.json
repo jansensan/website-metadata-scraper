@@ -9,6 +9,9 @@
     "start:www": "yarn hs ./public/www --cors --port 6464",
     "start": "yarn start:server & yarn start:www"
   },
+  "engines": {
+    "node": "12"
+  },
   "dependencies": {
     "cheerio": "^1.0.0-rc.9",
     "cors": "^2.8.5",
