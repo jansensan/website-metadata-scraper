@@ -1,7 +1,10 @@
-var scrapeURL = 'http://127.0.0.1:3232/scrape';
+const scrapeURL = 'http://127.0.0.1:3232/scrape';
 
 // dom elements
-var form = null;
+let form = null;
+
+// vars
+const hasClipboard = (navigator.clipboard) ? true : false;
 
 
 // auto initialization
@@ -14,6 +17,15 @@ function init() {
 
   // add event listeners
   form.addEventListener('submit', onFormSubmit);
+
+  if (hasClipboard) {
+    const copyButtons = document.getElementsByClassName('copy-btn');
+    const numButtons = copyButtons.length;
+    for (let i = 0; i < numButtons; i++) {
+      const button = copyButtons[i];
+      button.addEventListener('click', onCopyButtonClicked);
+    }
+  }
 }
 
 
@@ -220,6 +232,22 @@ function showResults(data) {
 function hideResults() {
   var results = document.getElementById('resultsContainer');
   results.classList.remove('visible');
+}
+
+async function onCopyButtonClicked(event) {
+  const button = event.target;
+  const fieldId = button.dataset.for;
+  const field = document.getElementById(fieldId)
+
+  try {
+    await navigator.clipboard.writeText(field.value);
+
+  } catch (error) {
+    console.log('Unable to copy:', error);
+    console.log('button:', button);
+    console.log('fieldId:', fieldId);
+    console.log('field:', field);
+  }
 }
 
 

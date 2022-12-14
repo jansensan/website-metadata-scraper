@@ -44,8 +44,8 @@ input[type="text"] {
   border: 1px solid black;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12pt;
-  padding: 5px;
-  width: calc(100% - 20px);
+  padding: 5px 30px 5px 5px;
+  width: calc(100% - 35px);
 }
 
 textarea,
@@ -70,6 +70,7 @@ code {
 
 .url-input {
   width: calc(100% - 170px) !important;
+  padding: 5px !important;
 }
 
 button[type="button"],
@@ -101,6 +102,28 @@ dt {
   font-weight: bold;
   margin-bottom: 5px;
   margin-top: 10px;
+}
+
+dd {
+  position: relative;
+}
+
+.copy-btn {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.copy-btn .icon {
+  margin-left: -1px;
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
 }
 
 .spinner-container {
@@ -140,3 +163,4 @@ dt {
   max-width: 100%;
   margin: 20px 0;
 }
+
